@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Hogares de Paso Disponibles{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylessegu.css' %}">
+</head>
+<body>
+
+<h1>Hogares de Paso Disponibles</h1>
+
+<ul class="animalitos-grid"> 
+    {% for hogar in hogares_paso %}
+        <li class="animalito-item">
+            <a href="{% url 'animales_en_hogar' hogar.id %}">
+            <img src="{{ hogar.imagen.url|default:'/media/Hogares.jpeg' }}" class="animalito-imagen">
+            <div class="animalito-info">
+                <h3>{{ hogar.user.username }}</h3> 
+                <p>Teléfono: {{ hogar.telefono }}</p>
+            </div>
+        </a>
+        </li>
+    {% empty %}
+        <li>No hay hogares de paso disponibles.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}" class="regresar-boton">
+    <button>Regresar a la página principal</button>
+</a>
+{% endblock %}

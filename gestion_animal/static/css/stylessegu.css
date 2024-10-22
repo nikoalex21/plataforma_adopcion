@@ -1,0 +1,48 @@
+/* Estilos para la vista de ayudador */
+.animalitos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 15px; /* Espacio entre los elementos */
+    padding: 0;
+}
+
+.animalito-item {
+    display: flex;
+    flex-direction: column; /* Coloca la imagen y la info en columna */
+    align-items: center; /* Centra horizontalmente */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center; /* Centra el texto */
+}
+
+.animalito-imagen {
+    width: 100px; /* Ancho fijo */
+    height: 100px; /* Alto fijo */
+    object-fit: cover; /* Recorta la imagen si es necesario para mantener el aspecto */
+    margin-bottom: 10px; /* Espacio entre la imagen y la info */
+}
+
+.estado {
+    font-weight: bold;
+}
+
+.regresar-boton {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+button {
+    background-color: #4CAF50; /* Color del botón */
+    color: white; /* Texto en blanco */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+button:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
+}

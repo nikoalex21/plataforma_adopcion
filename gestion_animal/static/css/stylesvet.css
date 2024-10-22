@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+img {
+    border-radius: 50%; /* Estilo de borde opcional */
+    width: 100px; /* Ajustar según sea necesario */
+    height: 100px;
+}
+
+form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    margin: 5px 0;
+}
+button {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color de texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano al pasar el ratón */
+    font-size: 16px; /* Tamaño del texto */
+    margin: 5px 0; /* Espaciado entre botones */
+    transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
+}
+
+button:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
+
+button:active {
+    background-color: #3e8e41; /* Color de fondo al hacer clic */
+    transform: translateY(2px); /* Pequeña animación al hacer clic */
+}

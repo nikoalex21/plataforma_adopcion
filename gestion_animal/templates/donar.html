@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Realizar una Donación</h1>
+
+<form method="POST" id="donacion-form">
+    {% csrf_token %}
+    
+    <label for="cantidad">Cantidad a donar (en COP):</label>
+    <input type="number" id="cantidad" name="cantidad" value="50000">
+    
+    <script
+        id="wompi-script"
+        src="https://checkout.wompi.co/widget.js"
+        data-render="button"
+        data-public-key="pub_prod_iV7wuVSqtb1hHMEKuLSAfndiKfKcgizD"
+        data-currency="COP"
+        data-amount-in-cents="5000000"
+        data-reference="DONACION_{{ user.id }}_{{ user.username }}"
+        data-signature:integrity="SOME_HASH_SIGNATURE"
+    ></script>
+</form>
+
+<script>
+document.getElementById('cantidad').addEventListener('input', function(e) {
+    const cantidad = e.target.value * 100;  // Wompi necesita el monto en centavos
+    const wompiScript = document.getElementById('wompi-script');
+    wompiScript.setAttribute('data-amount-in-cents', cantidad);
+});
+</script>
+
+{% endblock %}

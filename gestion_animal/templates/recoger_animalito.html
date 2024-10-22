@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Seguimiento de Animalitos</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis animalitos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylessegu.css' %}">
+</head>
+<body>
+
+<h2>Animalitos en Calle:</h2>
+<ul class="animalitos-grid">  <!-- Clase para la cuadrícula de animalitos -->
+    {% for animal in animales_en_calle %}
+        <li class="animalito-item">
+            <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}" class="animalito-imagen">
+            <div class="animalito-info">
+                <strong>{{ animal.nombre }}</strong><br>
+                Estado: <span class="estado">{{ animal.get_estado_display }}</span><br>
+                <p>{{ animal.descripcion }}</p> 
+                <p>Ayudador: {{ animal.ayudador.user }}</p>
+                <p>Teléfono: {{ animal.ayudador.telefono }}</p>
+            </div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="hidden" name="animalito_id" value="{{ animal.id }}">
+                <button type="submit" class="recoger-boton">Recoger</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>No hay animales en la calle.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'vista_hogar_paso' %}" class="regresar-boton">
+    <button>Regresar al hogar de paso</button>
+</a>
+{% endblock %}

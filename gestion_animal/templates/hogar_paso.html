@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Hogar de paso o Fundaciones {{ perfil.user.username }}</h1>
+<h2>{{ hogar.nombre }}</h2>  
+
+<a href="{% url 'ver_animalitos' %}">
+    <button>Ver Animalitos</button>
+</a>
+
+<a href="{% url 'recoger_animalito' %}">
+    <button>Recoger Animalito</button>
+</a>
+<a href="{% url 'listar_solicitudes' %}">
+    <button>Ver Solicitudes de Adopción</button>
+</a>
+{% endblock %}

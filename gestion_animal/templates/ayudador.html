@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Hola Ayudador</h1>
+<!DOCTYPE html>
+<html lang="es">
+    <h1>Perfil de Ayudador: {{ perfil.user.username }}</h1>
+
+    <!-- Botón para registrar un nuevo animalito -->
+    <a href="{% url 'registrar_animalito' %}">
+        <button>Registrar Animalito</button>
+    </a>
+    
+    <!-- Botón para seguimiento de animalitos -->
+    <a href="{% url 'seguimiento_animalitos' %}">
+        <button>Seguimiento de Animalitos</button>
+    </a>
+</html>
+
+{% endblock %}

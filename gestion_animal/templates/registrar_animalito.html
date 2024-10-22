@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Registrar Animalito</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required><br>
+
+    <label for="especie">Especie:</label>
+    <input type="text" name="especie" id="especie" required><br>
+
+    <label for="edad">Edad:</label>
+    <input type="number" name="edad" id="edad" required><br>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" id="descripcion" required></textarea><br>
+
+    <label for="imagen">Imagen:</label>
+    <input type="file" name="imagen" id="imagen" required><br>
+
+    <label for="estado">Estado:</label>
+    <select name="estado" id="estado" required>
+        <option value="calle">En la calle</option>
+        <option value="hogar_paso">En hogar de paso</option>
+        <option value="revisado_veterinario">Revisado por el veterinario</option>
+    </select><br>
+
+    <button type="submit">Registrar Animalito</button>
+</form>
+
+{% endblock %}

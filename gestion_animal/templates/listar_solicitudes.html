@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de Adopción</title>
+</head>
+<body>
+    <h1>Solicitudes de Adopción Pendientes</h1>
+
+    <ul>
+        {% for solicitud in solicitudes %}
+        <li>
+            <strong>Adoptante:</strong> {{ solicitud.nombre }}<br>
+            <strong>Teléfono:</strong> {{ solicitud.telefono }}<br>
+            <strong>Animal:</strong> {{ solicitud.animal.nombre }}<br>
+
+            <form method="post" action="{% url 'aprobar_rechazar_solicitud' solicitud.id %}">
+                {% csrf_token %}
+                <button type="submit" name="decision" value="aprobada">Aceptar</button>
+                <button type="submit" name="decision" value="rechazada">Rechazar</button>
+            </form>
+            
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

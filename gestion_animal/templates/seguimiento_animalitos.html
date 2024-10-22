@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Seguimiento de Animalitos</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Mis animalitos a Cargo{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylessegu.css' %}">
+</head>
+<body>
+
+<h2>Animalitos registrados:</h2>
+<ul class="animalitos-grid">  <!-- Cambia aquí para usar la clase animalitos-grid -->
+    {% for animalito in animalitos %}
+        <li class="animalito-item">
+            <img src="{{ animalito.imagen.url }}" alt="{{ animalito.nombre }}" class="animalito-imagen">
+            <div class="animalito-info">
+                <strong>{{ animalito.nombre }}</strong><br>
+                Estado: <span class="estado">{{ animalito.get_estado_display }}</span><br>
+            </div>
+        </li>
+    {% empty %}
+        <li>No hay animalitos registrados.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'vista_ayudador' %}" class="regresar-boton">
+    <button>Regresar a mi perfil</button>
+</a>
+{% endblock %}

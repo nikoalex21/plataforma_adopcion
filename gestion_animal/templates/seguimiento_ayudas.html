@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Seguimiento de Ayudas</h1>
+
+<h2>Donaciones</h2>
+<ul>
+    {% for donacion in donaciones %}
+    <li>
+        Donante: {{ donacion.usuario.username|default:"Anónimo" }},
+        Cantidad: {{ donacion.cantidad }},
+        Fecha: {{ donacion.fecha }},
+    </li>
+    {% empty %}
+    <li>No hay donaciones registradas.</li>
+    {% endfor %}
+</ul>
+
+<h2>Ayudas</h2>
+<ul>
+    {% for ayuda in ayudas %}
+    <li>
+        Tipo de ayuda: {{ ayuda.get_tipo_display }},
+        Cantidad: {{ ayuda.cantidad }},
+        Descripción: {{ ayuda.descripcion }},
+        Fecha: {{ ayuda.fecha }}
+    </li>
+    {% empty %}
+    <li>No hay ayudas registradas.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}">Regresar</a>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<body>
+
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'registro' %}">Registro</a></li>
+            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+            <li><a href="{% url 'donar' %}">Donaciones</a></li>
+            <li><a href="{% url 'seguimiento_ayudas' %}">Seguimiento de Ayudas</a></li>
+            <li><a href="{% url 'tienda' %}">Tienda</a></li>
+            <li><a href="{% url 'hogares_de_paso' %}">Quiero Adoptar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        {% block content %}
+        {% if request.session.nombre_usuario %}
+        <h1>Bienvenido, {{ request.session.nombre_usuario }}!</h1>
+        <p>Tipo de usuario: {{ request.session.tipo_usuario }}</p>
+        {% else %}
+        <h1>Bienvenido!</h1>
+        {% endif %}
+        {% endblock %}
+    </div>
+
+    <!-- Pie de Página -->
+    <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; border-top: 1px solid #dee2e6;">
+        <div style="margin-bottom: 10px;">
+            <h3 style="color: #343a40;">¿Listo para hacer la diferencia?</h3>
+            <p style="color: #6c757d;">¡Únete a nosotros hoy y ayuda a los animales vulnerables!</p>
+            <a href="ruta-a-tu-formulario-de-registro" style="text-decoration: none;">
+                <button style="background-color: #66b3ff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    Regístrate para ayudar
+                </button>
+            </a>
+        </div>
+        <div>
+            <p style="color: #6c757d;">&copy; 2024 Tu Plataforma. Todos los derechos reservados.</p>
+            <p>
+                <a href="ruta-a-terminos" style="color: #007bff; text-decoration: none; margin-right: 15px;">Términos de Servicio</a>
+                <a href="ruta-a-politica-privacidad" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
+            </p>
+        </div>
+    </footer>
+    
+    
+
+</body>
+</html>

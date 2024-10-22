@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Animales en hogar de paso{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylessegu.css' %}">
+</head>
+<h1>Animales en el Hogar</h1>
+
+<ul class="animalitos-grid"> 
+    {% for animal in animales %}
+    <li class="animalito-item">
+        <div class="animalito-info">
+            <h2>{{ animal.nombre }}</h2>
+            <p>Especie: {{ animal.especie }}</p>
+            <p>Edad: {{ animal.edad }} años</p>
+            <p>Descripción: {{ animal.descripcion }}</p>
+            <p>Estado:  {{ animal.get_estado_display }}</p>
+            {% if animal.imagen %}
+                <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}" class="animalito-imagen">
+            {% endif %}
+        
+        </div>
+        <form method="post" action="{% url 'solicitar_adopcion' animal.id %}">
+            {% csrf_token %}
+            <button type="submit">Adoptar</button>
+        </form>
+        </li>
+    {% empty %}
+        <li>No hay animales en este hogar de paso.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

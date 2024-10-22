@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="imagenes" style="text-align: center;">
+    <!-- Logo arriba -->
+    <img class="logo" src="{{ hogar.imagen.url|default:'/media/logo.jpeg' }}" alt="Logo" style="max-width: 150px; height: auto; display: block; margin: 0 auto;">
+    
+    <!-- Banner debajo del logo -->
+    <img class="banner" src="{{ hogar.imagen.url|default:'/media/banner.jpeg' }}" alt="Banner" style="max-width: 100%; height: auto; display: block; margin: 20px auto 0;">
+</div>
+{% endblock %}
