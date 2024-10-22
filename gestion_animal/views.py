@@ -10,7 +10,6 @@ from .forms import DonacionForm, AyudaForm
 
 @login_required
 def vista_veterinario(request):
-    # Obtener todos los animalitos, junto con los datos del ayudador
     animalitos = Animalito.objects.select_related('ayudador').all()
 
     if request.method == 'POST':
