@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylessegu.css' %}">
+</head>
+<body>
+<div class="container"> 
+    <div style="float: right;">
+        {% if request.user.is_authenticated %}
+            {% include "widget.html" %}
+        {% else %}
+            Debes hacer login 
+        {% endif %}
+    </div>
+
+    <h1>Productos Disponibles</h1>
+
+    <ul class="animalitos-grid"> <!-- Clase para la cuadrícula de productos -->
+        {% for producto in productos %}
+            <li class="animalito-item">
+                <div class="card" style="width: 100%; margin: 15px 10px;">
+                    <img src="{{ producto.imagen.url }}" class="animalito-imagen">
+                    <div class="card-body" style="text-align: center;">
+                        <h6 class="card-title">{{ producto.nombre }}</h6>
+                        <p class="card-text">{{ producto.precio }}&nbsp;$</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Añadir al carrito</a>
+                    </div>
+                </div>
+            </li>
+        {% empty %}
+            <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+{% endblock %}
